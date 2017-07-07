@@ -1,0 +1,39 @@
+.profile-form {
+    padding: 25px;
+}
+
+.profile-form-box-img {
+    margin-bottom: 15px;
+}
+
+.password-form {
+    margin-top: 15px;
+}
+
+.profile-title-section {
+    margin: 0 0 25px 0;
+    color: #ee6e73;
+    font-size: 1.2em;
+}
+
+.sep { 
+    width: 100%;
+    height: 1px;
+    margin: 25px 0;
+    background-color: #f2f2f2;
+}
+
+.profile-form-btn {
+    float: right;
+    line-height: 0;
+    padding: .8em !important;
+    font-size: .8em;
+}
+
+.isNotMatching {
+    border-bottom: 5px solid #ee6e73 !important;
+}
+
+.isMatching {
+    border-bottom: 1px solid greenyellow;
+}

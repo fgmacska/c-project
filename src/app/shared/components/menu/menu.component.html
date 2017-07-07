@@ -1,0 +1,46 @@
+<menu class="Menu">
+  <ul class="Menu-mobile-box">
+      <li class="Menu-title" *ngIf="currentUser">{{currentUser.displayName}}</li>
+      <li *ngFor="let menu of menus">
+        <a *ngIf="menu.children" class="Menu-link" [ngClass]="{'active-link': isDropped}" [innerHTML]="menu.page" (click)="isDropped = !isDropped"></a>
+        <a *ngIf="!menu.children" class="Menu-link" [routerLink]="menu.path" [innerHTML]="menu.page" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"></a>
+        <ul *ngIf="menu.children && isDropped">
+          <li *ngFor="let children of menu.children">
+            <a class="Menu-link-children" [routerLink]="children.path" [innerHTML]="children.page" routerLinkActive="children-active-link" [routerLinkActiveOptions]="{exact: true}"></a>
+          </li>
+        </ul>
+      </li>
+      <li *ngIf="isAdmin">
+        <a class="Menu-link" routerLink="membres" routerLinkActive="children-active-link">Membres</a>
+      </li>
+      <li>
+        <a href="#" class="Menu-link" (click)="logout()">Me déconnecter</a>
+      </li>
+    </ul>
+    <ng-template #memberMenu>
+      <a class="Menu-link" *ngIf="!menu.admin" [routerLink]="menu.path" [innerHTML]="menu.page" routerLinkActive="active-link"></a>
+    </ng-template>
+</menu>
+
+<menu *ngIf="isOpen" class="Menu-mobile">
+    <ul class="Menu-mobile-box">
+      <li *ngFor="let menu of menus">
+        <a *ngIf="menu.children" class="Menu-link" [ngClass]="{'active-link': isDropped}" [innerHTML]="menu.page" (click)="isDropped = !isDropped"></a>
+        <a *ngIf="!menu.children" class="Menu-link" [routerLink]="menu.path" [innerHTML]="menu.page" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"></a>
+        <ul *ngIf="menu.children && isDropped">
+          <li *ngFor="let children of menu.children">
+            <a class="Menu-link-children" [routerLink]="children.path" [innerHTML]="children.page" routerLinkActive="children-active-link" [routerLinkActiveOptions]="{exact: true}"></a>
+          </li>
+        </ul>
+      </li>
+      <li *ngIf="isAdmin">
+        <a class="Menu-link" routerLink="membres" routerLinkActive="children-active-link">Membres</a>
+      </li>
+      <li>
+        <a href="#" class="Menu-link" (click)="logout()">Me déconnecter</a>
+      </li>
+    </ul>
+    <ng-template #memberMenu>
+      <a class="Menu-link" *ngIf="!menu.admin" [routerLink]="menu.path" [innerHTML]="menu.page" routerLinkActive="active-link"></a>
+    </ng-template>
+</menu>

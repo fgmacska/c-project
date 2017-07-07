@@ -1,0 +1,121 @@
+<section class="observation-form" [@fadeInAnimation]>
+    <div>
+        <em class="col s12" style="color: #e74c3c;">Les champs marqués d'une étoile sont obligatoires</em>
+    </div>
+
+    <form [formGroup]="observationForm" *ngIf="active" (ngSubmit)="save(observationForm.value, observationForm.valid)" novalidate>
+        <div>
+            <label>Groupe *</label>
+            <ul class="select-animal box column">
+                <div class="box">
+                    <li class="select-animal-item">
+                        <input type="radio" id="mammifere" value="Mammifère" formControlName="group" class="input-hidden">
+                        <label for="mammifere">
+                            <img class="group-mobile" src="assets/images/sources/mammifere.svg" alt="Ordre des insectes">
+                        </label>
+                        <div *ngIf="formErrors.group" class="alert alert-error">
+                        {{ formErrors.group }}
+                        </div>
+                    </li>
+                    <li class="select-animal-item">
+                        <input type="radio" id="oiseau" value="Oiseau" formControlName="group" class="input-hidden">
+                        <label for="oiseau">
+                            <img class="group-mobile" src="assets/images/sources/oiseau.svg" alt="Ordre des insectes">
+                        </label>
+                    </li>
+                    <li class="select-animal-item">
+                        <input type="radio" id="insecte" value="Insecte" formControlName="group" class="input-hidden">
+                        <label for="insecte">
+                            <img class="group-mobile" src="assets/images/sources/insecte.svg" alt="Ordre des insectes">
+                        </label>
+                    </li>
+                </div>
+                
+                <div class="box">
+                    <li class="select-animal-item">
+                        <input type="radio" id="reptile" value="Reptile" formControlName="group" class="input-hidden">
+                        <label for="reptile">
+                            <img class="group-mobile" src="assets/images/sources/reptile.svg" alt="Ordre des insectes">
+                        </label>
+                    </li>
+                    <li class="select-animal-item">
+                        <input type="radio" id="amphibien" value="Amphibien" formControlName="group" class="input-hidden">
+                        <label for="amphibien">
+                            <img class="group-mobile" src="assets/images/sources/amphibien.svg" alt="Ordre des insectes">
+                        </label>
+                    </li>
+                    <li class="select-animal-item">
+                        <input type="radio" id="araignee" value="Araignée" formControlName="group" class="input-hidden">
+                        <label for="araignee">
+                            <img class="group-mobile" src="assets/images/sources/araignee.svg" alt="Ordre des insectes">
+                        </label>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="form-input-double">
+            <div class="block-1 mr">
+                <label for="specie">Espèce *</label>
+                <input type="text" placeholder="Espèce (Au singulier)" formControlName="specie">
+                
+                <div *ngIf="formErrors.specie" class="alert alert-error">
+                    {{ formErrors.specie }}
+                </div>
+            </div>
+
+            <div class="block-2">
+                <label for="count">Nombre*</label>
+                <input type="number" placeholder="Nombre" pattern="-?[0-9]*(\.[0-9]+)?" formControlName="count">
+                
+                <div *ngIf="formErrors.count" class="alert alert-error">
+                    {{ formErrors.count }}
+                </div>
+            </div>
+        </div>
+        
+        <label for="date">Date *</label>
+
+        <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="pickadateParams" formControlName="date" #datepicker>
+        
+        <div *ngIf="formErrors.date" class="alert alert-error">
+            {{ formErrors.date }}
+        </div>
+
+        <div class="form-input-double">
+            <div class="mr block-1">
+                <label for="place">Lieu *</label>
+                <input type="text" placeholder="Lieu" formControlName="place">
+
+                <div *ngIf="formErrors.place" class="alert alert-error">
+                    {{ formErrors.place }}
+                </div>
+            </div>
+
+            <div class="block-2">
+                <label for="gps">GPS</label>
+                <input type="text" placeholder="GPS" formControlName="gps">
+            </div>
+        </div>
+
+        <div class="form-input-double">
+            <div class="mr block-1">
+                <label for="meteo">Météo *</label>
+                <textarea class="materialize-textarea mr" placeholder="Note concernant le temps" formControlName="meteo"></textarea>
+                
+                <div *ngIf="formErrors.meteo" class="alert alert-error">
+                    {{ formErrors.meteo }}
+                </div>
+            </div>
+
+            <div class="block-2">
+                <label for="note">Note</label>
+                <textarea class="materialize-textarea" type="text" formControlName="note" rows="3" id="note" placeholder="Note"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!observationForm.valid" class="btn waves-effect waves-light" [innerHTML]="btnText"></button>
+
+    </form>
+
+    <div class="alert" [ngClass]="{ 'alert-success': isSuccess, 'alert-error': isError }" *ngIf="message">{{ message }}</div>
+</section>

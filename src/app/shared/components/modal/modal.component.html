@@ -1,0 +1,7 @@
+<div *ngIf="visible" class="overlay" (click)="close()"></div>
+
+<div *ngIf="visible" class="dialog" [@fadeInAnimation]>
+  <div class="dialog-content">
+    <ng-content></ng-content>
+  </div>
+</div>

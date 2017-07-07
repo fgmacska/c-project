@@ -1,0 +1,105 @@
+.Users-card { 
+    position: relative;
+    width: 85%;
+    margin: 0 auto 15px auto;
+    padding: 15px;
+    background-color: #ecf0f1;
+}
+
+.Users-card-avatar { 
+    display: block;
+    width: 60%;
+    margin: 55px auto 0 auto;
+    border: 1px solid #c2c2c2;
+}
+
+.Users-card-avatar:nth-child(1) {
+    margin-bottom: 0;
+}
+
+.Users-card-name { 
+    font-size: 1em;
+}
+
+.Users-card-state {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    padding: 15px;
+    background-color: #34495e;
+    color: #fff;
+}
+
+.Users-card-state span { float: left; }
+
+.Users-card-btn { 
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50px;
+    background-color: red;
+    border: none;
+    border-radius: 0;
+}
+
+.Users-card-btn i {
+    position: relative;
+    top: 3px;
+    font-size: 1.5em;
+}
+
+.Users-form {
+    padding: 25px;
+}
+
+@media (min-width: 768px) {
+    .Users-cards {
+        display: block;
+        margin: 0 25px;
+    }
+
+    .Users-card {
+        display: inline-block;
+        vertical-align: top;
+        width: calc(50% - 10px);
+        margin: 10px 0;
+    }
+
+    .Users-card:nth-child(odd) {
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .Users-form {
+        width: 35%;
+    }
+    
+    .Users-card {
+        width: calc(33% - 11px);
+        margin: 10px 0;
+    }
+
+    .Users-card {
+        margin-right: 20px;
+    }
+
+    .Users-card:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1440px) {
+    .Users-card {
+        width: calc(25% - 15px);
+    }
+
+    .Users-card:nth-child(3n) {
+        margin-right: 20px;
+    }
+
+    .Users-card:nth-child(4n) {
+        margin-right: 0;
+    }
+}

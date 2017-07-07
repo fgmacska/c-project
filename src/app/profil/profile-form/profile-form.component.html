@@ -1,0 +1,67 @@
+<section class="profile-form">
+  <div class="alert" [ngClass]="'alert-' + message.type" *ngIf="message">{{ message.text }}</div>
+
+  <h2 class="profile-title-section">Nom qui sera affiché dans les observations</h2>
+  <form (ngSubmit)="onUpdateName(nameForm)" class="clearfix" [formGroup]="nameForm" novalidate>
+    <label for="name">Nom</label>
+    <input type="text" formControlName="name">
+    <!--<div class="box profile-form-box-img">
+      <img src="https://i.ytimg.com/vi/TNlgiqbJSLg/hqdefault.jpg" alt="avatar" class="profile-form-img sep-r" width="100px" height="100px">
+        
+      
+      <div class="profile-form-photoURL sep-l">
+        <label for="photoURL">Photo</label>
+        <input type="url" formControlName="photoURL">
+      </div>
+    </div>-->
+    
+    <button type="submit" class="profile-form-btn btn waves-effect waves-light">
+        Modifier
+    </button>
+  </form>
+
+  <div class="sep"></div>
+
+  <form (ngSubmit)="onUpdateEmail(emailForm)" class="clearfix" [formGroup]="emailForm" novalidate>
+    <h2 class="profile-title-section">Email</h2>
+
+    <label for="email">Email</label>
+    <input type="text" placeholder="Email" formControlName="email" email>
+
+    <button type="submit" class="profile-form-btn btn waves-effect waves-light" [disabled]="!emailForm.valid">
+        Modifier
+    </button>
+  </form>
+
+  <div class="sep"></div>
+
+  <form class="password-form clearfix" (ngSubmit)="onUpdatePassword(passwordForm)" [formGroup]="passwordForm" novalidate>
+    <h2 class="profile-title-section">Mot de passe</h2>
+    
+    <label for="password">Nouveau mot de passe (6 caractères minimun)</label>
+    <input type="password" id="password" class="validate" minlength="5" placeholder="Nouveau mot de passe" formControlName="password">
+
+    <label for="confirmPassword">Confirmer le mot de passe</label>
+    <input type="password" [ngClass]="{ 'isNotMatching': notMatching, 'isMatching': notMatching }" id="confirmPassword"  class="validate" minlength="5" placeholder="Confirmer le mot de passe" formControlName="confirmPassword">
+    <!--<button *ngIf="!onPasswordRequest" type="submit" class="btn waves-effect waves-light">Modifier</button>-->
+    <button type="submit" class="profile-form-btn btn waves-effect waves-light" [disabled]="!passwordForm.valid">
+        Modifier
+    </button>
+  </form>
+
+  <app-modal [visible]="showDialog">
+    <i (click)="showDialog = !showDialog" style="display: block; width: 100%; text-align: right;" class="material-icons waves-effect waves-light">highlight_off</i>
+
+    <div class="sep"></div>
+
+    <h2 class="profile-title-section">Pour des raisons de sécurité veuillez entrer votre mot de passe actuel</h2>
+
+    <form class="clearfix" (ngSubmit)="onUpdateWithOldPassword(oldPasswordForm)" [formGroup]="oldPasswordForm" novalidate>
+      <input type="password" formControlName="oldPassword" placeholder="Ancien mot de passe">
+
+      <button type="submit" class="profile-form-btn btn waves-effect waves-light">
+          Valider
+      </button>
+    </form>
+  </app-modal>
+</section>

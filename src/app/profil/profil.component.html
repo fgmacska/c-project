@@ -1,0 +1,19 @@
+<section [@fadeInAnimation]>
+  <ul class="tabs grid Profile-menu" materialize="tabs" style="overflow: hidden">
+      <li class="tab grid-cell Profile-menu-item"><a href="#observations" class="Profile-menu-item-link active">Mes observations</a></li>
+      <li class="tab grid-cell Profile-menu-item"><a class="Profile-menu-item-link" href="#informations">Mes informations</a></li>
+      <div class="indicator Profile-menu-indicator" style="right: 712.306px; left: 356.153px;"></div>
+  </ul>
+
+  <div class="alert alert-error" *ngIf="message">{{ message }}</div>
+
+  <app-list 
+    id="observations"
+    *ngIf="observationsList; else profileForm"
+    [data]="observations" 
+    [columns]="columns"
+    [user]="authInfo"
+    (delete)="handleDelete($event)" [@fadeInAnimation]></app-list>
+
+  <app-profile-form id="informations" [currentUser]="authInfo"></app-profile-form>
+</section>

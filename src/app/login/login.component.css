@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
+.Login {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Login-form {
+    flex: 1;
+    padding: 40px;
+}
+
+.Login-overlay {
+    flex: 2;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Login-description {
+    padding: 40px; 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;  
+    background-color: rgba(3, 155, 229, 0.95);
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 100;
+}
+
+.Login-description-title {
+    padding-left: 100px;
+    font-size: 5em;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.Login-description-subtitle {
+    font-size: 1.4em;
+}
+
+.Login-description-para {
+    width: 75%;
+}
+
+.Login-description-link {   
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 75px);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 100;
+}
+
+.Login-wrapper {
+    margin-top: 17%;
+}
+
+.Login-description-sign {
+    display: block;
+    margin-top: 20px;
+    text-align: right;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+
+.Login-form-title {
+    font-size: 1.8em;
+}
+
+.Login-form-info {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.Login-form-button {
+    align-self: flex-end;
+}
+
+.Login-form-progress {
+    margin-top: 20px;
+}   
+
+.Login {
+    margin: 0px auto;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+}
+
+.Login-form {
+    background: rgb(52, 152, 219);
+}
+
+.Login {
+    margin: 0px auto;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+}
+
+.Login-title {
+    color: black;
+    font-weight: 100;
+}
+
+.Login-form label {
+    color: rgb(255, 255, 255);
+}
+
+.Login-form input {
+    background: rgb(255, 255, 255);
+    color: rgba(41, 128, 185, 1);
+}
+
+@media (min-width: 850px) {
+    .Login-form {
+        width: 50%;
+        box-shadow: 6px 6px 0px 0px rgba(41,128,185,0.3);
+    }
+
+    .Login-form-button {
+        float: right;
+    }
+}
+
+@media (min-width: 1050px) {
+    .Login-form {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Login-form {
+        width: 30%;
+    }
+}

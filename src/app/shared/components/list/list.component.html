@@ -1,0 +1,62 @@
+<div id="Datatable">
+    <p-dataTable [value]="observations" [paginator]="true" [rows]="10" sortField="date" sortOrder="1">
+        <p-column *ngFor="let column of columns"
+            [field]="column.field" 
+            [header]="column.header"
+            [sortable]="column.sortable"
+            [filter]="column.filter"></p-column>
+
+            <p-column styleClass="col-button">
+                <ng-template let-observation="rowData" pTemplate="body">
+                    <div class="Datable-icons">
+                        <i class="fa fa-search-plus Datatable-icon Datatable-icon-plus" aria-hidden="true" (click)="openModalWithSelectedData(observation)"></i>
+                        <i *ngIf="user.role === 'admin' || user.uid === observation.creator.uid" class="fa fa-pencil Datatable-icon Datatable-icon-edit" aria-hidden="true" [routerLink]="['/observations', observation.$key, 'editer']"></i>
+                        <i *ngIf="user.role === 'admin' || user.uid === observation.creator.uid" class="fa fa-trash Datatable-icon Datatable-icon-delete" aria-hidden="true" (click)="onDelete(observation.$key)"></i>
+                    </div>
+                </ng-template>
+            </p-column>
+    </p-dataTable>
+
+    <app-modal [(visible)]="showDialog" [value]="selectedObservation">
+        <i (click)="showDialog = !showDialog" style="display: block; width: 100%; text-align: right;" class="material-icons waves-effect waves-light">highlight_off</i>
+        <div class="box">   
+            <div class="col-6 sep-r">
+                <h2 class="modal-title">Groupe</h2>
+                <p class="modal-value">{{selectedObservation?.group}}</p>
+            </div> 
+            <div class="col-6 sep-l">
+                <h2 class="modal-title">Espèce</h2>
+                <p class="modal-value">{{selectedObservation?.specie}}</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="col-12">
+                <h2 class="modal-title">Nombre</h2>
+                <p class="modal-value">{{selectedObservation?.count}}</p>
+            </div>
+        </div>
+
+        <div class="box column">   
+            <div class="col-4 ">
+                <h2 class="modal-title">Lieu</h2>
+                <p class="modal-value">{{selectedObservation?.place}}</p>
+            </div> 
+            <div class="col-4 ">
+                <h2 class="modal-title">Gps</h2>
+                <p class="modal-value">{{selectedObservation?.gps ? selectedObservation.gps : "Pas de coordonnées GPS"}}</p>
+            </div>
+            <div class="col-4 ">
+                <h2 class="modal-title">Météo</h2>
+                <p class="modal-value">{{ selectedObservation?.meteo ? selectedObservation.meteo : "Aucune information concernant la météo" }}</p>
+            </div>
+        </div>
+
+        <div class="box"> 
+            <div class="col-12">
+                <h2 class="modal-title">Note</h2>
+                <p class="modal-value">{{selectedObservation?.note ? selectedObservation.note : "Aucune note"}}</p>
+            </div>
+        </div>
+    </app-modal>
+</div>

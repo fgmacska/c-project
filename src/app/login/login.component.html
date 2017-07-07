@@ -1,0 +1,27 @@
+<div class="Login" [@fadeInAnimation]>
+    <h1 class="Login-title">COCHEVIS</h1>
+    <div class="vcenter column Login-form">
+        <h2 class="Login-form-title">Connexion à l'application</h2>
+        <p class="Login-form-info">Pour une demande d'inscription, merci de contacter l'administrateur (en bas à gauche)</p>
+
+        <div *ngIf="error" class="alert alert-error"> 
+            {{ error }}
+        </div>
+
+        <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+            <div class="row">
+                <label for="email">Email...</label>
+                <input type="text" name="email" (ngModel)="email">
+
+                <label for="password">Mot de passe...</label>
+                <input type="password" name="password" (ngModel)="password">
+            </div>
+
+            <button type="submit" [disabled]="!formData.valid" class="Login-form-button waves-effect waves-light btn green">C'est parti !</button>
+        
+            <div *ngIf="onLoginRequest" class="Login-form-progress progress">
+                <div class="indeterminate"></div>
+            </div>
+        </form>    
+    </div>
+</div>

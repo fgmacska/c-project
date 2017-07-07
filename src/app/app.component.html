@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<div class="menu-mobile-box" (click)="toggleMenu()" *ngIf="isLoginPage">
+    <i class="menu-mobile">|||</i>
+    <h1 class="menu-title">COCHEVIS</h1>
+</div>
+
+<div class="box content-box">
+    <app-menu *ngIf="isLoginPage" [isAdmin]="isAdmin" [currentUser]="currentUser" [isOpen]="isOpen"></app-menu>
+    <div [ngClass]="{'content': location.path() !== '/connexion', 'content-login': location.path() === '/connexion'}">
+        <router-outlet></router-outlet>
+    </div> 
+</div>

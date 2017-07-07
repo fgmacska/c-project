@@ -1,0 +1,9 @@
+<section [@fadeInAnimation]>
+  <app-list 
+    [data]="itemsList" 
+    [columns]="columns"
+    [user]="authInfo"
+    (delete)="handleDelete($event)"></app-list>
+
+  <div class="alert alert-error" *ngIf="message">{{ message }}</div>
+</section>

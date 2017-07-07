@@ -1,0 +1,42 @@
+<div class="alert" [ngClass]="'alert-' + message.type" *ngIf="message">{{ message.text }}</div>
+
+<section id="Users" [@fadeInAnimation]>
+    <form (ngSubmit)="onAddingUser(userForm)" [formGroup]="userForm" class="column box Users-form">
+        <div class="Grid-cell input-field Users-form-field">
+            <input type="text" id="email" class="validate" formControlName="email" email>
+            <label for="email" class="active">Email</label>
+        </div>
+        <div class="Grid-cell input-field Users-form-field">
+            <input type="text" id="name" class="validate" formControlName="name">
+            <label for="name" class="active">Nom</label>
+        </div>
+        <div class="Grid-cell input-field Users-form-field">
+            <input type="text" id="password" class="validate" formControlName="password">
+            <label for="password" class="active">Mot de passe</label>
+        </div>
+        <button style="float:left" type="submit" [disabled]="!userForm.valid" class="btn-action-first btn-floating btn-small waves-effect waves-light green Users-form-btn">
+            <i class="material-icons">add</i>
+        </button>
+    </form>
+    <div class="Grid Users-cards box column">
+        <div *ngFor="let user of usersList" class="Users-card">
+            <div class="Users-card-state {{ user.deleted ? 'Users-card-state_deleted' : 'Users-card-state_active' }}">
+                <span>{{ user.deleted ? 'Supprimé' : 'Actif' }}</span>
+                <button *ngIf="!user.deleted" class="Users-card-btn Users-card-btn_active" (click)="onDelete({ key: user.$key, deleted: true })">
+                    <i class="material-icons">delete</i>
+                </button>
+
+                <button *ngIf="user.deleted" class="green Users-card-btn Users-card-btn_deleted" (click)="onDelete({ key: user.$key, deleted: false })">
+                    <i class="material-icons">check</i>
+                </button>
+            </div>
+            <div *ngIf="user.uid === currentUserUid" class="Users-card-state Users-card-state_admin">Administrateur</div>
+            <img src="{{user.photoURL}}" alt="Photo de {{user.name}}" class="Users-card-avatar">
+
+            <div class="Users-cards-info">
+                <h2 class="Users-card-name"><b>Nom : </b><br> {{ user.name }}</h2>
+                <div><b>Email : </b><br> {{ user.email }}</div>
+            </div>
+        </div>
+    </div>
+</section>
